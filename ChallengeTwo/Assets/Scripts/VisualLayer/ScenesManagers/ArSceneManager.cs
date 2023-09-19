@@ -5,15 +5,14 @@ using Niantic.ARDK.AR.ARSessionEventArgs;
 using UnityEngine;
 using Zenject;
 using ChallengeTwo.VisualLayer.Car;
-using Unity.VisualScripting;
-using Cysharp.Threading.Tasks;
 using Niantic.ARDK.Extensions.Meshing;
-using Niantic.ARDK.Extensions.Scanning;
 using ChallengeTwo.VisualLayer.Menus;
+using ChallengeTwo.Infrastructure.Logging;
 
 namespace ChallengeTwo.VisualLayer
 {
-    public class ArSceneManager:MonoBehaviour 
+    //this class is responsible for managing the scene elements.
+    public class ArSceneManager:IInitializable 
     {
         #region Injects
 
@@ -34,7 +33,7 @@ namespace ChallengeTwo.VisualLayer
 
         //the class that manages  ARMeshManager ,ARScanManager and the current IScanningmenu ,enable/disables the managers featurs by ui input.
         [Inject]
-        private ARScaning _arScanning;
+        private ARFeaturesManager _arScanning;
 
         //the class the manages the all menus.
         [Inject]
@@ -46,11 +45,15 @@ namespace ChallengeTwo.VisualLayer
 
         //helper debuging class for logging.
         [Inject]
-        private Loger _loger;
+        private TextLogger _loger;
 
         //the scaning ui menu.
         [Inject]
         private IScanningMenu _scaningMenu;
+
+        //the class that responsible for placing the car on ground.
+        [Inject]
+        private CarPlacer _carPlacer;
         #endregion
 
         #region Fields
@@ -65,12 +68,10 @@ namespace ChallengeTwo.VisualLayer
        
         #endregion
 
-
         #region mathods
-        //disables the ARScanning  and subscribes to the sessions init event.
-        public void Start()
+        //subscribes to the sessions init event.
+        public void Initialize()
         {
-            _arScanning.enabled=false;
             ARSessionFactory.SessionInitialized -= OnSessionInitialized;
             ARSessionFactory.SessionInitialized += OnSessionInitialized;
         }       
@@ -84,39 +85,18 @@ namespace ChallengeTwo.VisualLayer
         private async void Setup()
         {
             Screen.orientation = ScreenOrientation.LandscapeLeft;
-            _arScanning.enabled = true;            
             await _menusManager.ShowMenu("Scanning");
-            _scaningMenu.PlaceClick -= SpawnCarRoutine;
-            _scaningMenu.PlaceClick += SpawnCarRoutine;
-            _placingCar = false;
+            _scaningMenu.PlaceClick -= PlaceCarRoutine;
+            _scaningMenu.PlaceClick += PlaceCarRoutine;
         }
-        //tries to spawn car  each time player touches screen using car spawner(raycasts) until car is spawned and then hides scanning menu.
-        private async void  SpawnCarRoutine()
+        // placing the car when user touches the screen and switching to the car's ui.
+        private async void PlaceCarRoutine()
         {
-            if(_placingCar)
-            {
-                return;
-            }
-            _placingCar = true;
-            if (_carManager != null)
-            {
-                Destroy(_carManager.gameObject);    
-                _carManager = null;
-            }
-            while (_carManager == null)
-            {
-                if (_inputManager.IsClicking())
-                {
-
-                    _carManager = _carSpawner.TrySpawnCar(50, _inputManager.GetMousePosition());
-                    _loger.Log($"_carManager:{_carManager}");
-                }
-                await UniTask.Yield();
-            }
+            await _carPlacer.SpawnCarRoutine();
             await _menusManager.HideMenus();
             _carUi.SetActive(true);
-            _placingCar = false;
-        }      
+        }
+
         #endregion
     }
 }

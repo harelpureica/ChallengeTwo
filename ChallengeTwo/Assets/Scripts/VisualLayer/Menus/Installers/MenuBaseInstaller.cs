@@ -3,6 +3,8 @@ using Zenject;
 
 namespace ChallengeTwo.VisualLayer.Menus.Installers
 {
+    //this class is responsible for installing the menus ui panel.
+
     public abstract class MenuBaseInstaller:MonoInstaller<MenuBaseInstaller>
     {
         //the main parent panel of the menu.

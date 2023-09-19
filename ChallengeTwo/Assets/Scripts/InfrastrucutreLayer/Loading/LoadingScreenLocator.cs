@@ -6,9 +6,10 @@ using Infrastructure.SceneManaging;
 
 namespace ChallengeTwo.Infrastructure.Loading
 {
+    //this class is responsible for loading/unloading the loading  scene and  finding the loadingScreen
     public static class LoadingScreenLocator
     {
-        //loads the  loading scene and finds the loadingscreen.
+        //loads the loading scene and finds the loadingscreen.
         public static async UniTask<ILoadingScreen> GetLoadingScreen()
         {
             await SceneLoader. LoadSceneAsync("Loading");

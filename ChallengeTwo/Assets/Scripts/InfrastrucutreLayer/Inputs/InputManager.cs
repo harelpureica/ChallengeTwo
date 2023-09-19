@@ -5,7 +5,7 @@ using Zenject;
 
 namespace ChallengeTwo.InfrastrucutreLayer.Inputs
 {
-    //InputManager serves as the main and only input provider for all input consumers.
+    //InputManager serves as the main  user input provider for all input consumers.
     public class InputManager:IInputManager
     {
         #region Methods
@@ -34,6 +34,7 @@ namespace ChallengeTwo.InfrastrucutreLayer.Inputs
             }
             return isclicking;
         }
+
         //returns true if the player  is touching the screen,for testing it works also for pc and phones.
 
         public bool IsPressing()

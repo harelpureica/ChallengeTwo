@@ -4,9 +4,11 @@ using Zenject;
 
 namespace ChallengeTwo.VisualLayer.Menus
 {
+    //this class is responsible for  showing and hiding a menu's ui.
+
     public abstract class MenuBase :MonoBehaviour
     {
-        //the   main parent panel of the menu
+        //the  main parent panel of the menu
         [Inject(Id ="Panel")]        
         protected RectTransform _panel;
 
@@ -22,7 +24,7 @@ namespace ChallengeTwo.VisualLayer.Menus
         #endregion
 
         #region Fields
-
+         // a flag to know if the menu is open.
         protected bool _visible;
 
         #endregion

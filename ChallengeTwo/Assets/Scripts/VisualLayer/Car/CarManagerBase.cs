@@ -4,10 +4,15 @@ using Zenject;
 
 namespace ChallengeTwo.VisualLayer.Car
 {
-    public class CarManagerBase:MonoBehaviour
+    //this class is responsible for managing the car components.
+
+    [RequireComponent(typeof(Rigidbody))]
+    public abstract class CarManagerBase:MonoBehaviour
     {
         #region Injects
+
         //the movement input component. 
+
         [Inject]
         protected IMovementInput _input;
 
@@ -18,7 +23,8 @@ namespace ChallengeTwo.VisualLayer.Car
         #endregion
 
         #region Factory
-        //a  factory for dynamicly creating CarManagerBase objects .
+
+        //a  factory for dynamicly creating CarManagerBase instances.
         public class CarManagerFactory : PlaceholderFactory<CarManagerBase>
         {
         }
@@ -39,7 +45,7 @@ namespace ChallengeTwo.VisualLayer.Car
             _rb=GetComponent<Rigidbody>();
         }
 
-        //moving by input.
+        //moving the rigidBody by input.
         protected virtual void Update()
         {
             _movement.Move(_input.GetInput(),_rb);

@@ -6,17 +6,18 @@ using UnityEngine.SceneManagement;
 
 namespace Infrastructure.SceneManaging
 {
+    //this class is responsible for loading/unloading scenes.
     public static class SceneLoader
     {
-        // A flag to validate that nobody will load twice.
+        // A flag to validate that nobody will load twice while loading.
         private static bool isLoading;
 
-        // A flag to validate that nobody will unload twice.
+        // A flag to validate that nobody will unload twice while unloading.
 
         private static bool isUnLoading;
 
         #region Methods
-        //Loads a scene  async with loading screen and unloads the open scene.
+        //Loads a scene  async with a loading screen and unloads the open scene.
         public static async UniTask LoadSceneWithLoadingScreenAsync(string sceneToLoad, string sceneToUnload)
         {
 

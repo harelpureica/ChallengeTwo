@@ -4,6 +4,7 @@ using Zenject;
 
 namespace ChallengeTwo.VisualLayer.Car.Installers
 {
+    //this class is responsible for installing the needed bindings for car's ui .
     public class CarUiInstaller:MonoInstaller<CarUiInstaller>
     {
         #region Fields
@@ -15,12 +16,7 @@ namespace ChallengeTwo.VisualLayer.Car.Installers
 
         [SerializeField]
         private HoldingButton _breakesPedalBtn;        
-
-        //the ui for steering the car.
-
-        [SerializeField]
-        private CarSteeringWheel _wheel;
-
+       
         //the parent object of the cars ui.
 
         [SerializeField]
@@ -60,7 +56,6 @@ namespace ChallengeTwo.VisualLayer.Car.Installers
 
             Container
                .Bind<CarSteeringWheel>()
-               .FromInstance(_wheel)
                .AsTransient();
 
             Container

@@ -3,6 +3,7 @@ using Zenject;
 
 namespace ChallengeTwo.VisualLayer.ReusableComponents.Installers
 {
+    //this class is responsible for installing the  input for movement component.
     public class MovementInputInstaller:MonoInstaller<MovementInputInstaller>
     {
         //binds the IMovementInput interface to the  movement input class.
@@ -10,7 +11,7 @@ namespace ChallengeTwo.VisualLayer.ReusableComponents.Installers
         {
             Container
                 .Bind<IMovementInput>()
-                .To<MovementInput>()          
+                .To<CarMovementInput>()          
                 .AsSingle();         
         }
     }

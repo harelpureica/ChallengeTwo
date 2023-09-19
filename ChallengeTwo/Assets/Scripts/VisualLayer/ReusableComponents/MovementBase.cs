@@ -5,9 +5,8 @@ using Zenject;
 
 namespace ChallengeTwo.VisualLayer.ReusableCopmponents
 {
-    //base class for physics based movement components to inherit from.
+    //base class for physics based input movement components to inherit from.
 
-    [RequireComponent(typeof(Rigidbody))]
     public abstract class MovementBase : IMoveByInput
     {
         #region Injects
@@ -18,7 +17,7 @@ namespace ChallengeTwo.VisualLayer.ReusableCopmponents
         #endregion      
 
         #region Methods  
-        // moves the rigidbody by players input.
+        // moves the rigidbody by input.
         public abstract void Move(Vector2 input, Rigidbody body);       
 
         #endregion

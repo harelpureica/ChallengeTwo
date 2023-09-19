@@ -5,6 +5,8 @@ using Zenject;
 
 namespace ChallengeTwo.VisualLayer.Menus
 {
+    //this class is responsible for  Opening the Scanning Menu.
+
     [RequireComponent(typeof(Button))]
     public class OpenScanningMenu:MonoBehaviour
     {

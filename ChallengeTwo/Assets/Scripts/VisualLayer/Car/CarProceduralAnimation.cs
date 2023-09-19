@@ -1,15 +1,16 @@
-﻿using Assets.Scripts.VisualLayer.Car;
-using ChallengeTwo.DataLayer.Configuration;
+﻿using ChallengeTwo.DataLayer.Configuration;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
 namespace ChallengeTwo.VisualLayer.Car
 {
+    //this class is responsible for animating the simple car.
+
     public class CarProceduralAnimation: ICarProceduralAnimation
     {
         #region Injections
-        // the references for the car parts,wheels etc..
+        // the references for the car parts.
         [Inject]
         private SimpleCarPartsRefrencer _carPart;
 

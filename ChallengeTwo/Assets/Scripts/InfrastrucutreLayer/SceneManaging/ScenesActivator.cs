@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 namespace ChallengeTwo.InfrastrucutreLayer.SceneManaging
 {
+    //this class is responsible for activating a scene when its loaded.
     public class ScenesActivator:MonoBehaviour
     {
         #region Fields
@@ -38,7 +39,7 @@ namespace ChallengeTwo.InfrastrucutreLayer.SceneManaging
         }
 
         //activates the scene immediatly to make sure the elements in the scene will be ready 
-        //and that the camera.main/current ref will update currectly
+        //and that the camera.main/current ref will update currectly 
         private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
         {
            SceneManager.SetActiveScene(arg0);

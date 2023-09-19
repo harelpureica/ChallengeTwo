@@ -1,11 +1,10 @@
-﻿using Assets.Scripts.VisualLayer.Car;
-using ChallengeTwo.VisualLayer.Car;
-using System.Collections.Generic;
+﻿using ChallengeTwo.VisualLayer.Car;
 using UnityEngine;
 using Zenject;
 
 namespace ChallengeTwo.DataLayer.Configuration
 {
+    //this class is responsible for installing the needed bindings for animating the simple car.
     public class CarProceduralAnimationInstaller:MonoInstaller
     {
         #region Fields

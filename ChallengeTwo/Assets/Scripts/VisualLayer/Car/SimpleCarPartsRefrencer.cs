@@ -3,6 +3,8 @@ using UnityEngine;
 
 namespace ChallengeTwo.VisualLayer.Car
 {
+    //this class is responsible for getting the simple car parts such a wheels.
+
     public class SimpleCarPartsRefrencer:CarPartsRefrencerBase
     {
         #region Fields

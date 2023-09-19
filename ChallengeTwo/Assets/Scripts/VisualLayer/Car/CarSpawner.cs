@@ -4,7 +4,9 @@ using Zenject;
 
 namespace ChallengeTwo.VisualLayer.Car
 {
-    public class CarSpawner:MonoBehaviour
+    //this class is responsible for spawning the simple car.
+
+    public class CarSpawner
     {
         #region Injects
         //the factory for creating CarManagers.

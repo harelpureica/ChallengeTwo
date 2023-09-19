@@ -5,6 +5,8 @@ using Zenject;
 
 namespace ChallengeTwo.VisualLayer.Menus
 {
+    //this class is responsible for managing the menus.
+
     public class MenusManager:IMenusManager
     {
         #region Fields

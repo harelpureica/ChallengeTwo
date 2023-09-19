@@ -9,6 +9,7 @@ using Zenject;
 
 namespace ChallengeTwo.VisualLayer.Car
 {
+    //this class is responsible for getting the input needed for moving  and steering the car
     public class CarUi 
     {
         #region Injections      

@@ -2,15 +2,16 @@
 
 namespace ChallengeTwo.DataLayer.Configuration
 {
-    [CreateAssetMenu(fileName = "CarProceduralAnimationSettings", menuName = "Configuration/CarProceduralAnimationSettings")]
+    //this class holds the settings needed for CarProceduralAnimation component.
+    [CreateAssetMenu(fileName = "CarProceduralAnimationSettings", menuName = "Configuration/CarProceduralAnimationSettings")]  
     public class CarProceduralAnimationSettings:ScriptableObject
     {
         #region Fields
-        //Controls The torque force apllied to each corner.
+        //Controls The torque force apllied to each corner of the car,used to simulate bounciness.
         [SerializeField]
         private float _bounciness;
 
-        //the distance to check if the car is grounded
+        //the distance to check if the car is grounded.
         [SerializeField]
         private float _groundCheckDistance;
         #endregion

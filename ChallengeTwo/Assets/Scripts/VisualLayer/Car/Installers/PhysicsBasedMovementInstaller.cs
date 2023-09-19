@@ -1,6 +1,5 @@
 ﻿
 
-using Assets.Scripts.VisualLayer.Car;
 using ChallengeTwo.DataLayer.Configuration;
 using ChallengeTwo.VisualLayer.ReusableComponents;
 using UnityEngine;
@@ -8,6 +7,8 @@ using Zenject;
 
 namespace ChallengeTwo.VisualLayer.Car.Installers
 {
+    //this class is responsible for installing the needed bindings for moving the car based on physics.
+
     public class PhysicsBasedMovementInstaller:MonoInstaller<PhysicsBasedMovementInstaller>
     {
         #region Field
@@ -18,7 +19,7 @@ namespace ChallengeTwo.VisualLayer.Car.Installers
 
         //the settings needed for physics based car movement .
         [SerializeField]
-        private PhysicBasedCarSettings _settings;
+        private PhysicBasedCarMovementSettings _settings;
         #endregion
 
         #region Methods
@@ -26,7 +27,7 @@ namespace ChallengeTwo.VisualLayer.Car.Installers
         public override void InstallBindings()
         {
             Container
-                .Bind<PhysicBasedCarSettings>()
+                .Bind<PhysicBasedCarMovementSettings>()
                 .FromInstance(_settings)
                 .AsSingle();
 

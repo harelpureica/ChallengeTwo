@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 namespace ChallengeTwo.VisualLayer.Menus
 {
+   //this class is responsible providing scanning related ui events.
     public class ScaningMenu :MenuBase ,IScanningMenu
     {
         #region Fields

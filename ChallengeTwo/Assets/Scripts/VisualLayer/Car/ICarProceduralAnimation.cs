@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace ChallengeTwo.VisualLayer.Car
 {
+    //this interface is responsible for animating the simple car.
+
     public interface ICarProceduralAnimation
     {
         #region Methods

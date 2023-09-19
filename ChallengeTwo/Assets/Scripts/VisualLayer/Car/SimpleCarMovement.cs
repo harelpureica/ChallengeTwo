@@ -1,9 +1,10 @@
 ﻿using ChallengeTwo.VisualLayer.ReusableCopmponents;
 using UnityEngine;
-using Zenject;
 
 namespace ChallengeTwo.VisualLayer.Car
 {
+    //this class is responsible for  moving the simple car based on input.
+
     public class SimpleCarMovement : MovementBase
     {
         //moves and rotates the rigidbody based  on input,

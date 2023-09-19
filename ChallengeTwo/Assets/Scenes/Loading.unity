@@ -270,10 +270,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1720f697c37d16b49a17aa4e8cd55270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIpanelRectTransform: {fileID: 20276593}
-  UIparent: {fileID: 20276592}
-  loadingSlider: {fileID: 2134851294}
-  fadeSpeed: 1
+  _UIpanelRectTransform: {fileID: 20276593}
+  _UIparent: {fileID: 20276592}
+  _loadingSlider: {fileID: 2134851294}
+  _fadeSpeed: 1.5
 --- !u!114 &1290112969
 MonoBehaviour:
   m_ObjectHideFlags: 0

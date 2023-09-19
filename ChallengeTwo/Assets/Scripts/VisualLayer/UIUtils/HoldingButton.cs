@@ -6,6 +6,8 @@ using Zenject;
 
 namespace ChallengeTwo.VisualLayer.UIUtils
 {
+    //this class is responsible for providing input consistently  when this  ui button is pressed.
+
     [RequireComponent(typeof(RectTransform))]
     public class HoldingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {

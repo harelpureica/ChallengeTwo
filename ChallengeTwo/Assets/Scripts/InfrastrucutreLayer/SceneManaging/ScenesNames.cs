@@ -1,6 +1,6 @@
 ﻿
 
-namespace ChallengeTwo.InfrastrucutreLayer
+namespace ChallengeTwo.InfrastrucutreLayer.SceneManaging
 {
     //public refrences for scenes names.
     public class ScenesNames

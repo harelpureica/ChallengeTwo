@@ -2,6 +2,8 @@
 
 namespace ChallengeTwo.VisualLayer.Menus.Installers
 {
+    //this class is responsible for installing the scanning menu .
+
     public class ScaningMenuInstaller:MenuBaseInstaller
     {
         #region Fields

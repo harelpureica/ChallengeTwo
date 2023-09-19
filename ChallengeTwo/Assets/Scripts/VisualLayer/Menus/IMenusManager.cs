@@ -3,15 +3,17 @@ using UnityEngine;
 
 namespace ChallengeTwo.VisualLayer.Menus
 {
+    //this interface is responsible for managing the menus.
+
     public interface IMenusManager
     {
-        //hides al active menus.
+        //hides all active menus.
         UniTask HideMenus();
 
-        //shows a menu by name
+        //shows a menu by name.
         UniTask ShowMenu(string menuName);
 
-        //adds dynamicly a menu to  menusManager list of menus.
+        //adds  a menu dynamicly  to the menusManager list of menus.
         void AddMenu(MenuBase menu);
 
         //removes dynamicly a menu from  menusManager list of menus.

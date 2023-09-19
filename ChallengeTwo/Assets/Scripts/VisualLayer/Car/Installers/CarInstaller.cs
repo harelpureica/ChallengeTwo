@@ -5,15 +5,12 @@ using Zenject;
 
 namespace ChallengeTwo.VisualLayer.Car.Installers
 {
+    //this class is responsible for installing the needed bindings for spawning the car.
     public class CarInstaller:MonoInstaller<CarInstaller>
     {
         //the prefab of the carManager to spawn in
         [SerializeField]
-        private CarManagerBase _carManagerPrefab;
-
-        //the car spawner.
-        [SerializeField]
-        private CarSpawner _carSpawnerInstance;
+        private CarManagerBase _carManagerPrefab;      
        
         //binds the factory on the component and the spawner
         public override void InstallBindings()
@@ -25,8 +22,7 @@ namespace ChallengeTwo.VisualLayer.Car.Installers
                 .AsSingle();
 
             Container
-                .Bind<CarSpawner>()
-                .FromInstance(_carSpawnerInstance)
+                .Bind<CarSpawner>()                
                 .AsSingle();
             
         }

@@ -1,18 +1,14 @@
-using ChallengeTwo.VisualLayer.ReusableComponents;
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
-using UnityEngine;
 using Zenject;
 
 namespace ChallengeTwo.VisualLayer.Car
 {
-    [RequireComponent(typeof(Rigidbody))]
+    //this class is responsible for managing the simple car componets.
+
     public class SimpleCarManager : CarManagerBase
     {
         #region Fields   
 
-        // a reference to the simple Cars procedural Animaton component
+        // a reference to the simple Car procedural Animaton component
 
         [Inject]
         private ICarProceduralAnimation _proceduralAnimaton;
@@ -21,7 +17,7 @@ namespace ChallengeTwo.VisualLayer.Car
 
         #region Methods  
         //using base class method to move the car.
-        //tells the procedural Animaton component to animate the cars wheels and body based on velocity.
+        //tells the procedural Animaton component to animate the cars wheels and body by velocity and direction.
         protected override void Update()
         {
             base.Update();        

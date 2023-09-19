@@ -2,6 +2,8 @@
 
 namespace ChallengeTwo.InfrastrucutreLayer.Inputs
 {
+    //this interface is responsible for getting user input.
+
     public interface IInputManager
     {
         //returns true if players clickes on the screen.

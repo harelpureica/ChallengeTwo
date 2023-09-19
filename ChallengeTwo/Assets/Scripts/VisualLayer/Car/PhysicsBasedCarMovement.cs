@@ -2,42 +2,36 @@
 using ChallengeTwo.InfrastrucutreLayer.Inputs;
 using ChallengeTwo.VisualLayer.Car;
 using ChallengeTwo.VisualLayer.ReusableComponents;
-using ChallengeTwo.VisualLayer.ReusableCopmponents;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Windows;
 using Zenject;
 
-namespace Assets.Scripts.VisualLayer.Car
+namespace ChallengeTwo.VisualLayer.Car
 {
+    //this class is responsible for moving the physics based car.
+
     public class PhysicsBasedCarMovement:IMoveByInput
     {
 
         #region Injects       
-        // the Settings needed for PhysicBasedCar .
+        // the Settings needed for Physic Based car movement .
         [Inject]
-        private PhysicBasedCarSettings _settings;
+        private PhysicBasedCarMovementSettings _settings;
 
-        //the refernces for the physics cars parts.
+        //holds the refernces for the physics cars parts.
         [Inject]
         private PhysicsBasedCarPartsRefrencer _refrencer;
 
         #endregion
 
         #region Methods                   
-        //moves the car based on input.
+        //moves and handles steering of the car based on input.
         public void Move(Vector2 input, Rigidbody body)
         {
             HandleMotor(input);
             HandleSteering(input);
             UpdateWheels();
         }
-        //adding torque to the back wheels  based on input .
+        //setting torque to the back wheels  based on input .
         private void HandleMotor(Vector2 input)
         {
             for (int i = 0; i < _refrencer.BackWheelsColliders.Count; i++)

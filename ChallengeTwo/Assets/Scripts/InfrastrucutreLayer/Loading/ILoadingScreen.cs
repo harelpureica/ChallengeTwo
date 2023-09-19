@@ -2,6 +2,7 @@
 
 namespace ChallengeTwo.Infrastructure.Loading
 {
+    //this interface is responsible for showing loading ui and  loading Progress.
     public interface ILoadingScreen
     {
         //updates the ui  that shows the loading progress.
@@ -9,6 +10,7 @@ namespace ChallengeTwo.Infrastructure.Loading
 
         //showing the loading screen Ui.
         UniTask FadeIn();
+
         //Hiding the loading screen Ui.
         UniTask FadeOut();
 

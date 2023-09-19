@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 namespace ChallengeTwo.VisualLayer.Menus
 {
+    //this interface is responsible for the ui events related to scanning.
+
     public interface IScanningMenu
     {
         #region Events

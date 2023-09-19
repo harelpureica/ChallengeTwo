@@ -5,27 +5,28 @@ using UnityEngine.UI;
 
 namespace ChallengeTwo.Infrastructure.Loading
 {
+    //this class is responsible for displaying loading ui.
     public class LoadingScreen : MonoBehaviour, ILoadingScreen
     {
         #region Fields
-        //the parent panel for all laodiing ui.  
+        //the parent RectTransform panel for all loading ui.  
         [SerializeField]
-        private RectTransform UIpanelRectTransform;
+        private RectTransform _UIpanelRectTransform;
 
         //the parent gameObject for all laodiing ui.  
 
         [SerializeField]
-        private GameObject UIparent;
+        private GameObject _UIparent;
 
         //the slider  for showing loadiing progress .  
 
         [SerializeField]
-        private Slider loadingSlider;
+        private Slider _loadingSlider;
 
-        //the  speed of  showing/hiding ui . 
+        //the  speed of  showing/hiding the ui . 
 
         [SerializeField]
-        private float fadeSpeed;
+        private float _fadeSpeed;
         #endregion
 
         #region Methods
@@ -33,28 +34,28 @@ namespace ChallengeTwo.Infrastructure.Loading
         //scales up the ui panel.
         public async UniTask FadeIn()
         {
-            if (UIpanelRectTransform != null)
+            if (_UIpanelRectTransform != null)
             {
-                UIpanelRectTransform.localScale = Vector3.zero;
+                _UIpanelRectTransform.localScale = Vector3.zero;
             }
 
-            if (UIparent != null)
+            if (_UIparent != null)
             {
-                UIparent.SetActive(true);
+                _UIparent.SetActive(true);
             }
 
             var lerp = 0f;
             while (lerp < 1)
             {
-                if (UIpanelRectTransform == null)
+                if (_UIpanelRectTransform == null)
                 {
                     return;
                 }
-                UIpanelRectTransform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, lerp);
-                lerp += UnityEngine.Time.deltaTime * fadeSpeed;
+                _UIpanelRectTransform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, lerp);
+                lerp += UnityEngine.Time.deltaTime * _fadeSpeed;
                 await UniTask.Yield();
             }
-            UIpanelRectTransform.localScale = Vector3.one;
+            _UIpanelRectTransform.localScale = Vector3.one;
             await UniTask.Delay(500);
         }
 
@@ -65,18 +66,18 @@ namespace ChallengeTwo.Infrastructure.Loading
             var lerp = 1f;
             while (lerp > 0)
             {
-                if (UIpanelRectTransform == null)
+                if (_UIpanelRectTransform == null)
                 {
                     return;
                 }
-                UIpanelRectTransform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, lerp);
-                lerp -=UnityEngine.Time.deltaTime * fadeSpeed;
+                _UIpanelRectTransform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, lerp);
+                lerp -=UnityEngine.Time.deltaTime * _fadeSpeed;
                 await UniTask.Yield();
             }
-            UIpanelRectTransform.localScale = Vector3.zero;
-            if (UIparent != null)
+            _UIpanelRectTransform.localScale = Vector3.zero;
+            if (_UIparent != null)
             {
-                UIparent.SetActive(false);
+                _UIparent.SetActive(false);
             }
             await UniTask.Delay(500);
 
@@ -85,7 +86,7 @@ namespace ChallengeTwo.Infrastructure.Loading
         //updates the slider value.
         public void UpdateProgress(float progress)
         {
-            loadingSlider.value = progress;
+            _loadingSlider.value = progress;
         }
       
         #endregion

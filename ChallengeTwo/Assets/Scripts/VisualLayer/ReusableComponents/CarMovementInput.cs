@@ -1,32 +1,33 @@
-﻿using ChallengeTwo.InfrastrucutreLayer.Inputs;
-using ChallengeTwo.VisualLayer.Car;
+﻿using ChallengeTwo.VisualLayer.Car;
 using UnityEngine;
 using Zenject;
 
 namespace ChallengeTwo.VisualLayer.ReusableComponents
 {
-    public class MovementInput : IMovementInput
+    //this class is responsible for providing input for movement component.
+
+    public class CarMovementInput : IMovementInput
     {
         #region Injects
         //the cars ui that gets movement input .
         [Inject]
-        private CarUi _carUiInput;
+        private CarUi _carUi;
         
         #endregion
         //returns the input from the ui.
         public Vector2 GetInput()
         {
 
-            var inputY = 0;
-            if(_carUiInput != null)
+            var inputY = 0f;
+            if(_carUi != null)
             {
-                if (_carUiInput.BreakPressed)
+                if (_carUi.BreakPressed)
                 {
-                    inputY = -1;
+                    inputY =-1 ;
                 }
-                else if (_carUiInput.GazPressed)
+                else if (_carUi.GazPressed)
                 {
-                    inputY = 1;
+                    inputY =  1;
                 }
                 else
                 {
@@ -34,7 +35,7 @@ namespace ChallengeTwo.VisualLayer.ReusableComponents
                 }
             }
            
-            var input= new Vector2(_carUiInput.SteeringHorizontal, inputY);
+            var input= new Vector2(_carUi.SteeringHorizontal, inputY);
             return input;             
         }
     }

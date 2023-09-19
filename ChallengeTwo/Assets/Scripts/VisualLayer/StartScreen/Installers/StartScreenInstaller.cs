@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Niantic.ARDK.Extensions.Permissions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,8 @@ using Zenject;
 
 namespace ChallengeTwo.VisualLayer.StartScreen.Installers
 {
+    //this class is responsible for installing the  start screen.
+
     public class StartScreenInstaller:MonoInstaller<StartScreenInstaller>
     {
         #region Fields
@@ -33,7 +36,8 @@ namespace ChallengeTwo.VisualLayer.StartScreen.Installers
 
         //the cars lights for vfx.
         [SerializeField]
-        private List<Light> _carLights;      
+        private List<Light> _carLights;
+
 
         #endregion
         
@@ -41,6 +45,11 @@ namespace ChallengeTwo.VisualLayer.StartScreen.Installers
         //binds all inputs and outputs needed for start screen.
         public override void InstallBindings()
         {
+            Container
+                .Bind<IInitializable>()
+                .To<StartScreenManager>()
+                .AsTransient();
+
             Container
                 .Bind<Button>()
                 .WithId("Start")
@@ -69,6 +78,8 @@ namespace ChallengeTwo.VisualLayer.StartScreen.Installers
               .Bind<List<Light>>()              
               .FromInstance(_carLights)
               .AsSingle();
+
+           
         }
         #endregion
     }

@@ -2,12 +2,13 @@ using UnityEngine;
 
 namespace ChallengeTwo.DataLayer.Configuration
 {
+    //this class holds the seetings needed for components that inherit  from movementBase.
     [CreateAssetMenu(menuName = "Configuration/MovementSettings", fileName = "MovementSettings")]
     public class MovementSettings : ScriptableObject
     {
         #region Fields
 
-        //Controlls the rigidbody movement speed.
+        //Controlls the rigidbody movement speed and max velocity.
         [SerializeField]
         private float maxSpeed;
 
@@ -27,7 +28,7 @@ namespace ChallengeTwo.DataLayer.Configuration
         [SerializeField]
         private LayerMask groundLayer;
 
-        //the amount to rotate 
+        //the amount to rotate in angles.
         [SerializeField]
         private float rotationAngle;
 

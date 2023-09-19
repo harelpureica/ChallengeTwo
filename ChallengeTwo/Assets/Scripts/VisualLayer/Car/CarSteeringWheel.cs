@@ -1,15 +1,22 @@
 ﻿using ChallengeTwo.InfrastrucutreLayer.Inputs;
+using ChallengeTwo.InfrastrucutreLayer.TimeManaging;
 using ChallengeTwo.VisualLayer.UIUtils;
-using ModestTree;
-using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using Zenject;
 
 namespace ChallengeTwo.VisualLayer.Car
 {
-    public class CarSteeringWheel:MonoBehaviour
+    //this class is responsible for getting the input from the wheel ui needed for steering the car.
+
+    public class CarSteeringWheel
     {
+        [Inject]
+        public CarSteeringWheel(ITimeManager timeManager)
+        {
+            _timeManager = timeManager;
+            _timeManager.OnTick -= Tick;
+            _timeManager.OnTick += Tick;
+        }
         #region Injections
         //the input provider.
         [Inject]
@@ -30,6 +37,8 @@ namespace ChallengeTwo.VisualLayer.Car
         // the result input.
         private float _horiznotalInput;
 
+        private ITimeManager _timeManager;
+
         #endregion
 
         #region Properties
@@ -39,7 +48,7 @@ namespace ChallengeTwo.VisualLayer.Car
 
         #region Methods
         //updates the input result based on the distance from the players touch to the center of the wheels ui.
-        private void Update()
+        private void Tick()
         {
             if(_holdingButton.IsPressed)
             {
